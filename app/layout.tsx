@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: "SyncHub | Salesforce Implementation, Development & Consulting",
   description,
+  alternates: { canonical: "/" },
   keywords: [
     "Salesforce consulting",
     "Salesforce implementation",

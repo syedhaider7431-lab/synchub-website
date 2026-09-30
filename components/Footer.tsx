@@ -2,12 +2,12 @@ import Logo from "@/components/Logo";
 import { site } from "@/lib/site";
 
 const links = [
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "/#services" },
+  { label: "Process", href: "/#process" },
+  { label: "Work", href: "/#work" },
+  { label: "About", href: "/#about" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Footer() {
@@ -35,6 +35,9 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-line flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-sm text-white/40">
           <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
           <div className="flex items-center gap-6">
+            <a href="/privacy/" className="hover:text-white transition-colors">
+              Privacy
+            </a>
             <a href={`mailto:${site.email}`} className="hover:text-white transition-colors">
               {site.email}
             </a>

@@ -1,14 +1,15 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 import Logo from "@/components/Logo";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Services", href: "/#services" },
+  { label: "Process", href: "/#process" },
+  { label: "Work", href: "/#work" },
+  { label: "About", href: "/#about" },
+  { label: "FAQ", href: "/#faq" },
 ];
 
 export default function Navbar() {
@@ -18,6 +19,10 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
+    // Arriving from another page (e.g. /privacy/ → /#services): jump to the section once rendered.
+    if (window.location.hash) {
+      document.getElementById(window.location.hash.slice(1))?.scrollIntoView({ behavior: "instant" });
+    }
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -34,9 +39,9 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main">
         <div className="flex items-center justify-between h-18">
-          <a href="#top" aria-label="SyncHub home">
+          <Link href="/" aria-label="SyncHub home">
             <Logo />
-          </a>
+          </Link>
 
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
@@ -50,9 +55,9 @@ export default function Navbar() {
             ))}
           </div>
 
-          <a href="#contact" className="hidden md:inline-flex btn-primary py-2.5 px-5 text-sm">
+          <Link href="/#contact" className="hidden md:inline-flex btn-primary py-2.5 px-5 text-sm">
             Book a free call
-          </a>
+          </Link>
 
           <button
             onClick={() => setOpen(!open)}
@@ -77,9 +82,9 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <a href="#contact" onClick={() => setOpen(false)} className="btn-primary w-full mt-4">
+            <Link href="/#contact" onClick={() => setOpen(false)} className="btn-primary w-full mt-4">
               Book a free call
-            </a>
+            </Link>
           </div>
         )}
       </nav>

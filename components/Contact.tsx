@@ -236,7 +236,10 @@ export default function Contact() {
                     <a href={`mailto:${site.email}`} className="underline">{site.email}</a>.
                   </p>
                 ) : (
-                  <p className="text-white/40 text-xs text-center mt-4">We reply within one business day. No spam, ever.</p>
+                  <p className="text-white/40 text-xs text-center mt-4">
+                    We reply within one business day. See our{" "}
+                    <a href="/privacy/" className="underline hover:text-white">privacy policy</a>.
+                  </p>
                 )}
               </form>
             )}
